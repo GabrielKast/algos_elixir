@@ -19,16 +19,16 @@ defmodule Sort.SortMainTests  do
 	assert 1+1 == 2
       end
 
-      test "Empty list should remain empty", %{sort_module: sort_module}  do
-	assert [] == sort_module.sort([])
+      test "Empty list should remain empty", %{sort_fun: sort_fun}  do
+	assert [] == sort_fun.([])
       end
 
-      test "Simple list should be sorted", %{sort_module: sort_module} do
-	assert @first_expected == sort_module.sort(@first_list)
+      test "Simple list should be sorted", %{sort_fun: sort_fun} do
+	assert @first_expected == sort_fun.(@first_list)
       end
 
-      test "Other list should be sorted", %{sort_module: sort_module} do
-	assert @second_expected == sort_module.sort(@second_list)
+      test "Other list should be sorted", %{sort_fun: sort_fun} do
+	assert @second_expected == sort_fun.(@second_list)
       end
 
     end

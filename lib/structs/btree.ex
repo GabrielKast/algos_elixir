@@ -37,18 +37,30 @@ defmodule Structs.Btree do
 
   @doc """
   Example of use of &traverse/3
+    ## Example :
+    iex> tree = %{left: :leaf,
+        right: %{left: :leaf,
+          right: %{left: %{left: :leaf, right: :leaf, value: 13}, right: :leaf,
+            value: 15}, value: 10}, value: 1}
+    iex> Structs.Btree.print_in_order tree
+    1
+    10
+    13
+    15
   """
   def print_in_order tree do
     traverse tree, :inorder, &IO.puts/1
   end
 
   @doc """
-  More abstract example. Implement a collect with an agent
-   ## Example : tree = %{left: :leaf,
+  More abstract example. Implement a collect with an Agent
+   ## Example : 
+   iex> tree = %{left: :leaf,
         right: %{left: :leaf,
           right: %{left: %{left: :leaf, right: :leaf, value: 13}, right: :leaf,
             value: 15}, value: 10}, value: 1}
-       Structs.Btree.collect tree
+   iex> Structs.Btree.collect tree
+   [1, 10, 13, 15]
   """
   def collect tree do
     {:ok, pid} = Agent.start_link(fn -> [] end)
